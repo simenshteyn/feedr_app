@@ -1,0 +1,6 @@
+database:
+  host: postgres_database
+  port: 5432
+  username: words_user
+  password: abc807
+  databaseName: words

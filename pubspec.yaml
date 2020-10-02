@@ -1,7 +1,7 @@
 name: feedr_app
-description: An empty Aqueduct application.
+description: Application to handle clients feedback.
 version: 0.0.1
-author: stable|kernel <jobs@stablekernel.com>
+author: Sergey Simenshteyn <simenshteyn@gmail.com>
 
 environment:
   sdk: ">=2.0.0 <3.0.0"
@@ -12,3 +12,6 @@ dependencies:
 dev_dependencies:
   test: ^1.0.0
   aqueduct_test: ^1.0.0
+
+dependency_overrides:
+  postgres: 2.1.1
