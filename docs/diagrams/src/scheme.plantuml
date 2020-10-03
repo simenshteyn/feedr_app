@@ -1,8 +1,37 @@
 ### https://github.com/plantuml/plantuml-server
+
 @startuml FeedrScheme
-abstract class BlocWithPageNotifier {
-    inWarningMessage(): String
-    outWarningMessage(): String
+class Vote {
+    id: Int
+    score: Int
+    comment: String
+    worker: Worker
+    client: Client
+    time: DateTime
+    +addVote()
+    +editVote()
+    +deleteVote()
+    +showWorkerVotes()
+    +showClientVotes()
+    sho
 }
 
+class Worker {
+    id: Int
+    name: String
+    rating: Double
+    +addWorker()
+    +editWorker()
+    +deleteWorker()
+    +getRatring()
+}
+
+class Client {
+    id: Int
+    name: String
+    phone: Int
+}
+
+Worker -> Vote
+Client -> Vote
 @enduml
