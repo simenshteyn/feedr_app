@@ -1,9 +1,5 @@
 import 'feedr_app.dart';
 
-/// This type initializes an application.
-///
-/// Override methods in this class to set up routes and initialize services like
-/// database connections. See http://aqueduct.io/docs/http/channel/.
 class FeedrAppChannel extends ApplicationChannel {
   /// Initialize services in this method.
   ///

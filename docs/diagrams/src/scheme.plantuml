@@ -1,0 +1,8 @@
+### https://github.com/plantuml/plantuml-server
+@startuml FeedrScheme
+abstract class BlocWithPageNotifier {
+    inWarningMessage(): String
+    outWarningMessage(): String
+}
+
+@enduml
