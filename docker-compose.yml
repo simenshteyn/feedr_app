@@ -7,7 +7,7 @@ services:
 
   db:
     image: "postgres:12"
-    container_name: "postgres_database"
+    container_name: "postgres_database_feedr"
     environment: 
       POSTGRES_PASSWORD: abc807
       POSTGRES_USER: words_user
