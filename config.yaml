@@ -1,6 +1,6 @@
 database:
   host: postgres_database_feedr
   port: 5432
-  username: words_user
+  username: feedr_user
   password: abc807
-  databaseName: words
+  databaseName: feedr_db

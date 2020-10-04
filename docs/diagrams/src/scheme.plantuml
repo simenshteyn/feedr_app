@@ -13,8 +13,11 @@ class Vote {
     +deleteVote()
     +showWorkerVotes()
     +showClientVotes()
-    sho
 }
+note bottom of Vote
+  /votes
+  /vote/id
+end note
 
 class Worker {
     id: Int
@@ -25,13 +28,16 @@ class Worker {
     +deleteWorker()
     +getRatring()
 }
+note bottom of Worker
+  /workers
+  /worker/id
+end note
 
 class Client {
     id: Int
     name: String
     phone: Int
 }
-
 Worker -> Vote
 Client -> Vote
 @enduml

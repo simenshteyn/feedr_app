@@ -6,12 +6,12 @@ services:
     - "80:80"
 
   db:
-    image: "postgres:12"
+    image: "postgres:11"
     container_name: "postgres_database_feedr"
     environment: 
       POSTGRES_PASSWORD: abc807
-      POSTGRES_USER: words_user
-      POSTGRES_DB: words
+      POSTGRES_USER: feedr_user
+      POSTGRES_DB: feedr_db
     ports:
       - "5432:5432" # If you want to expose the db from the container
     volumes:
