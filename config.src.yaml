@@ -1,6 +1,6 @@
 database:
   host: localhost
-  port: 5433
-  username: dart 
-  password: dart
-  databaseName: dart_test 
+  port: 5432
+  username: feedr_user
+  password: abc807
+  databaseName: feedr_db

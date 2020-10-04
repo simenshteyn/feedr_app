@@ -15,4 +15,12 @@ class WorkerController extends ResourceController {
     }
     return Response.ok(worker);
   }
+
+  @Operation.post()
+  Future<Response> addWorker(
+      @Bind.body(ignore: ['id']) Worker newWorker) async {
+    final query = Query<Worker>(context)..values = newWorker;
+    final insertedWorker = await query.insert();
+    return Response.ok(insertedWorker);
+  }
 }
