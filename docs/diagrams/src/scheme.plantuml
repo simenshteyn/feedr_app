@@ -5,7 +5,7 @@ class Vote {
     id: Int
     score: Int
     comment: String
-    worker: Worker
+    servant: Servant
     client: Client
     time: DateTime
     +addVote()
@@ -19,18 +19,18 @@ note bottom of Vote
   /vote/id
 end note
 
-class Worker {
+class Servant {
     id: Int
     name: String
     rating: Double
-    +addWorker()
-    +editWorker()
-    +deleteWorker()
-    +getRatring()
+    +addServant()
+    +editServant()
+    +deleteServant()
+    +getRating()
 }
-note bottom of Worker
-  /workers
-  /worker/id
+note bottom of Servant
+  /servant
+  /servant/id
 end note
 
 class Client {
@@ -38,6 +38,6 @@ class Client {
     name: String
     phone: Int
 }
-Worker -> Vote
+Servant -> Vote
 Client -> Vote
 @enduml
