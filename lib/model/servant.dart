@@ -1,8 +1,8 @@
 import 'package:aqueduct/aqueduct.dart';
 
-class Worker extends ManagedObject<_Worker> implements _Worker {}
+class Servant extends ManagedObject<_Servant> implements _Servant {}
 
-class _Worker {
+class _Servant {
   @primaryKey
   int id;
 

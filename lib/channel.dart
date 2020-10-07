@@ -1,4 +1,4 @@
-import 'package:feedr_app/controller/worker_controller.dart';
+import 'package:feedr_app/controller/servant_controller.dart';
 
 import 'feedr_app.dart';
 
@@ -29,7 +29,7 @@ class FeedrAppChannel extends ApplicationChannel {
     router.route("/example").linkFunction((request) async {
       return Response.ok({"key": "value"});
     });
-    router.route("worker/[:id]").link(() => WorkerController(context));
+    router.route("servant/[:id]").link(() => ServantController(context));
 
     return router;
   }

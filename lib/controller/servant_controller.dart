@@ -1,0 +1,33 @@
+import 'package:feedr_app/feedr_app.dart';
+import 'package:feedr_app/model/servant.dart';
+
+class ServantController extends ResourceController {
+  ManagedContext context;
+  ServantController(this.context);
+
+  @Operation.get()
+  Future<Response> getAllServants() async {
+    final query = Query<Servant>(context);
+    final servantList = await query.fetch();
+    return Response.ok(servantList);
+  }
+
+  @Operation.get('id')
+  Future<Response> getServantById(@Bind.path('id') int id) async {
+    final query = Query<Servant>(context)..where((w) => w.id).equalTo(id);
+    final servant = await query.fetchOne();
+
+    if (servant == null) {
+      return Response.notFound();
+    }
+    return Response.ok(servant);
+  }
+
+  @Operation.post()
+  Future<Response> addServant(
+      @Bind.body(ignore: ['id']) Servant newServant) async {
+    final query = Query<Servant>(context)..values = newServant;
+    final insertedServant = await query.insert();
+    return Response.ok(insertedServant);
+  }
+}
