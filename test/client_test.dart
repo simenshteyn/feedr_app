@@ -31,6 +31,15 @@ Future main() async {
         "mobilePhone": "79230000000",
         "fullName": "Serj",
       });
+      final deleteResponse = await harness.agent.delete("/client/$clientId");
+      expectResponse(deleteResponse, 200, body: {
+        "id": clientId,
+        "mobilePhone": "79230000000",
+        "fullName": "Serj",
+      });
+      final deleteResponseSecond =
+          await harness.agent.delete("/client/$clientId");
+      expect(deleteResponseSecond.statusCode, 404);
     });
   });
 }

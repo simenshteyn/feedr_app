@@ -43,4 +43,16 @@ class ClientController extends ResourceController {
     }
     return Response.ok(updatedClient);
   }
+
+  @Operation.delete('id')
+  Future<Response> deleteClientById(@Bind.path('id') int id) async {
+    final query = Query<Client>(context)..where((c) => c.id).equalTo(id);
+    final client = await query.fetchOne();
+    final deletedClient = await query.delete();
+
+    if (deletedClient == 0) {
+      return Response.notFound();
+    }
+    return Response.ok(client);
+  }
 }
