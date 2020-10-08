@@ -7,10 +7,8 @@ class _Client {
   @primaryKey
   int id;
 
-  @Column()
   String mobilePhone;
 
-  @Column()
   String fullName;
 
   ManagedSet<Vote> votes;

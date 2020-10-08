@@ -7,10 +7,10 @@ class _Servant {
   @primaryKey
   int id;
 
-  @Column()
+
   String name;
 
-  @Column()
+
   double rating;
 
   ManagedSet<Vote> votes;

@@ -1,6 +1,7 @@
 import 'package:feedr_app/controller/servant_controller.dart';
 import 'package:feedr_app/controller/vote_controller.dart';
 import 'package:feedr_app/controller/client_controller.dart';
+import 'package:feedr_app/controller/feedback_controller.dart';
 
 import 'feedr_app.dart';
 
@@ -36,6 +37,8 @@ class FeedrAppChannel extends ApplicationChannel {
     router.route("vote/[:id]").link(() => VoteController(context));
 
     router.route("client/[:id]").link(() => ClientController(context));
+
+    router.route("feedback/[:id]").link(() => FeedbackController(context));
 
     return router;
   }
