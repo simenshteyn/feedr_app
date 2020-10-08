@@ -7,8 +7,8 @@ class _Client {
   @primaryKey
   int id;
 
-  @Column(unique: true)
-  int mobilePhone;
+  @Column()
+  String mobilePhone;
 
   @Column()
   String fullName;
