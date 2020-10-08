@@ -9,6 +9,7 @@ class _Client {
 
   String mobilePhone;
 
+  @Column(nullable: true)
   String fullName;
 
   ManagedSet<Vote> votes;

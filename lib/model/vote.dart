@@ -11,6 +11,7 @@ class _Vote {
 
   DateTime createdTime;
 
+  @Column(nullable: true)
   DateTime voteTime;
 
   String askMessage;
@@ -23,5 +24,6 @@ class _Vote {
 
   Feedback feedback;
 
+  @Column(nullable: true)
   String linkId;
 }
