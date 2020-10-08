@@ -1,4 +1,5 @@
 import 'package:feedr_app/controller/servant_controller.dart';
+import 'package:feedr_app/controller/vote_controller.dart';
 
 import 'feedr_app.dart';
 
@@ -30,6 +31,8 @@ class FeedrAppChannel extends ApplicationChannel {
       return Response.ok({"key": "value"});
     });
     router.route("servant/[:id]").link(() => ServantController(context));
+    
+    router.route("vote/[:id]").link(() => VoteController(context));
 
     return router;
   }
