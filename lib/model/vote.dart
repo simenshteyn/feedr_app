@@ -1,4 +1,6 @@
 import 'package:aqueduct/aqueduct.dart';
+import 'package:feedr_app/model/client.dart';
+import 'package:feedr_app/model/servant.dart';
 
 class Vote extends ManagedObject<_Vote> implements _Vote {}
 
@@ -10,16 +12,16 @@ class _Vote {
   DateTime createdTime;
 
   @Column()
+  DateTime voteTime;
+
+  @Column()
   String askMessage;
 
-  @Column()
-  int clientPhone;
+  @Relate(#votes)
+  Client client;
 
-  @Column()
-  int servantId;
-
-  @Column()
-  String servantName;
+  @Relate(#votes)
+  Servant servant;
 
   @Column()
   String linkId;

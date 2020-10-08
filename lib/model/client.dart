@@ -1,4 +1,5 @@
 import 'package:aqueduct/aqueduct.dart';
+import 'package:feedr_app/model/vote.dart';
 
 class Client extends ManagedObject<_Client> implements _Client {}
 
@@ -7,8 +8,10 @@ class _Client {
   int id;
 
   @Column(unique: true)
-  int clientPhone;
+  int mobilePhone;
 
   @Column()
-  String clientName;
+  String fullName;
+
+  ManagedSet<Vote> votes;
 }
