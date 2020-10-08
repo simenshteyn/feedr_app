@@ -7,6 +7,9 @@ class _Vote {
   int id;
 
   @Column()
+  DateTime createdTime;
+
+  @Column()
   String askMessage;
 
   @Column()
