@@ -29,4 +29,18 @@ class ClientController extends ResourceController {
     final insertedClient = await query.insert();
     return Response.ok(insertedClient);
   }
+
+  @Operation.put('id')
+  Future<Response> updateClientById(@Bind.path('id') int id,
+      @Bind.body(ignore: ['id']) Client clientUpdate) async {
+    final query = Query<Client>(context)
+      ..values = clientUpdate
+      ..where((c) => c.id).equalTo(id);
+    final updatedClient = await query.updateOne();
+
+    if (updatedClient == null) {
+      return Response.notFound();
+    }
+    return Response.ok(updatedClient);
+  }
 }

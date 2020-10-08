@@ -20,6 +20,17 @@ Future main() async {
         "mobilePhone": "79231234567",
         "fullName": "Sergey",
       });
+
+      final putResponse = await harness.agent.put("/client/$clientId", body: {
+        "id": clientId,
+        "mobilePhone": "79230000000",
+        "fullName": "Serj",
+      });
+      expectResponse(putResponse, 200, body: {
+        "id": clientId,
+        "mobilePhone": "79230000000",
+        "fullName": "Serj",
+      });
     });
   });
 }
