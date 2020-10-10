@@ -9,7 +9,7 @@ Future main() async {
       expect(response.statusCode, 200);
     });
 
-    test("POST, GET /feedback/[:id] return 200 OK after request", () async {
+    test("POST, GET, PUT, DELETE /feedback/[:id] return 200 OK after request", () async {
       final postResponse = await harness.agent.post('feedback', body: {
         "message": "Some feedback message",
         "stars": 4,
@@ -35,6 +35,17 @@ Future main() async {
         "stars": 5,
         "vote": null,
       });
+      final deleteResponse =
+          await harness.agent.delete("/feedback/$feedbackId");
+      expectResponse(deleteResponse, 200, body: {
+        "id": feedbackId,
+        "message": "Some feedback message updated",
+        "stars": 5,
+        "vote": null,
+      });
+      final deleteResponseSecond =
+          await harness.agent.delete("/feedback/$feedbackId");
+      expect(deleteResponseSecond.statusCode, 404);
     });
   });
 }
