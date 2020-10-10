@@ -1,5 +1,6 @@
 import 'package:feedr_app/feedr_app.dart';
 import 'package:feedr_app/model/client.dart';
+import 'package:feedr_app/model/feedback.dart';
 import 'package:feedr_app/model/servant.dart';
 import 'package:feedr_app/model/vote.dart';
 
@@ -57,15 +58,31 @@ class VoteController extends ResourceController {
       }
     }
 
+    Future<Feedback> createFeedback(Vote voteData, ManagedContext ctx) async {
+      final feedbackQuery = Query<Feedback>(context)
+        ..values = voteData.feedback;
+      final newFeedback = await feedbackQuery.insert();
+      return newFeedback;
+    }
+
     Client client = await findClientByPhoneInDb(newVote, context);
     Servant servant = await findServantByName(newVote, context);
+    Feedback feedback = await createFeedback(newVote, context);
 
     final query = Query<Vote>(context)
       ..values = newVote
       ..values.createdTime = DateTime.now()
       ..values.client.id = client.id
-      ..values.servant.id = servant.id;
+      ..values.servant.id = servant.id
+      ..values.feedback.id = feedback.id;
     final insertedVote = await query.insert();
+
+    // final updateFeedbackQuery = Query<Feedback>(context)
+    //   ..values = feedback
+    //   ..values.vote.id = insertedVote.id
+    //   ..where((f) => f.id).equalTo(feedback.id);
+    // final createdVote = await updateFeedbackQuery.updateOne();
+
     return Response.ok(insertedVote);
   }
 }

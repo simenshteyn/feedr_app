@@ -21,7 +21,6 @@ Future main() async {
         "id": feedbackId,
         "message": "Some feedback message",
         "stars": 4,
-        "vote": null,
       });
       final putResponse =
           await harness.agent.put("/feedback/$feedbackId", body: {
@@ -33,7 +32,6 @@ Future main() async {
         "id": feedbackId,
         "message": "Some feedback message updated",
         "stars": 5,
-        "vote": null,
       });
       final deleteResponse =
           await harness.agent.delete("/feedback/$feedbackId");
@@ -41,7 +39,6 @@ Future main() async {
         "id": feedbackId,
         "message": "Some feedback message updated",
         "stars": 5,
-        "vote": null,
       });
       final deleteResponseSecond =
           await harness.agent.delete("/feedback/$feedbackId");

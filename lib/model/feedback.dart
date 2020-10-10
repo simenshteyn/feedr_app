@@ -7,7 +7,6 @@ class _Feedback {
   @primaryKey
   int id;
 
-  @Relate(#feedback)
   Vote vote;
 
   @Column(nullable: true)

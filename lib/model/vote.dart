@@ -22,6 +22,7 @@ class _Vote {
   @Relate(#votes)
   Servant servant;
 
+  @Relate(#vote)
   Feedback feedback;
 
   @Column(nullable: true)
