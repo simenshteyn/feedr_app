@@ -16,29 +16,49 @@ class VoteController extends ResourceController {
 
   @Operation.post()
   Future<Response> addVote(@Bind.body(ignore: ['id']) Vote newVote) async {
-    Client client;
-    Servant servant;
-
-    final clientPhoneQuery = Query<Client>(context)
-      ..where((c) => c.mobilePhone).equalTo(newVote.client.mobilePhone);
-    final clientPhone = await clientPhoneQuery.fetchOne();
-
-    if (clientPhone == null) {
-      final clientQuery = Query<Client>(context)..values = newVote.client;
-      final client = await clientQuery.insert();
-    } else {
-      final client = clientPhone;
+    Future<Client> createNewClientInDb(
+        Client clientData, ManagedContext ctx) async {
+      final addClientQuery = Query<Client>(ctx)..values = clientData;
+      final client = await addClientQuery.insert();
+      return client;
     }
 
-    final servantNameQuery = Query<Servant>(context)
-      ..where((s) => s.name).equalTo(newVote.servant.name);
-    final servantName = await servantNameQuery.fetchOne();
-    if (servantName == null) {
-      final servantQuery = Query<Servant>(context)..values = newVote.servant;
-      final servant = await servantQuery.insert();
-    } else {
-      final servant = servantName;
+    Future<Client> findClientByPhoneInDb(
+        Vote voteData, ManagedContext ctx) async {
+      final findByPhoneQuery = Query<Client>(ctx)
+        ..where((c) => c.mobilePhone).equalTo(voteData?.client?.mobilePhone);
+      final clientFoundedByPhone = await findByPhoneQuery.fetchOne();
+      if (clientFoundedByPhone == null) {
+        final Client client = await createNewClientInDb(voteData.client, ctx);
+        return client;
+      } else {
+        final Client client = clientFoundedByPhone;
+        return client;
+      }
     }
+
+    Future<Servant> createNewServantInDb(
+        Servant servant, ManagedContext ctx) async {
+      final servantQuery = Query<Servant>(context)..values = servant;
+      final newServant = await servantQuery.insert();
+      return newServant;
+    }
+
+    Future<Servant> findServantByName(Vote voteData, ManagedContext ctx) async {
+      final servantNameQuery = Query<Servant>(context)
+        ..where((s) => s.name).equalTo(voteData?.servant?.name);
+      final servantName = await servantNameQuery.fetchOne();
+      if (servantName == null) {
+        Servant servant = await createNewServantInDb(voteData.servant, ctx);
+        return servant;
+      } else {
+        final Servant servant = servantName;
+        return servant;
+      }
+    }
+
+    Client client = await findClientByPhoneInDb(newVote, context);
+    Servant servant = await findServantByName(newVote, context);
 
     final query = Query<Vote>(context)
       ..values = newVote
