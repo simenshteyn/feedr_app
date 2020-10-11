@@ -15,6 +15,20 @@ Future main() async {
         "feedback": {"message": "Everything is ok", "stars": 5},
       });
       expectResponse(postResponse, 200);
+      final voteId = postResponse.body.as<Map>()["id"];
+      final getResponse = await harness.agent.get("/vote/$voteId");
+      expect(
+          getResponse,
+          hasBody(partial({
+            "id": voteId,
+            "createdTime": isTimestamp,
+            "voteTime": isNull,
+            "askMessage": "Please, leave your feedback",
+            "linkId": isNull,
+            "client": isNotNull,
+            "servant": isNotNull,
+            "feedback": isNotNull,
+          })));
     });
   });
 }

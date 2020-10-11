@@ -77,12 +77,17 @@ class VoteController extends ResourceController {
       ..values.feedback.id = feedback.id;
     final insertedVote = await query.insert();
 
-    // final updateFeedbackQuery = Query<Feedback>(context)
-    //   ..values = feedback
-    //   ..values.vote.id = insertedVote.id
-    //   ..where((f) => f.id).equalTo(feedback.id);
-    // final createdVote = await updateFeedbackQuery.updateOne();
-
     return Response.ok(insertedVote);
+  }
+
+  @Operation.get('id')
+  Future<Response> getVoteById(@Bind.path('id') int id) async {
+    final query = Query<Vote>(context)..where((w) => w.id).equalTo(id);
+    final vote = await query.fetchOne();
+
+    if (vote == null) {
+      return Response.notFound();
+    }
+    return Response.ok(vote);
   }
 }
