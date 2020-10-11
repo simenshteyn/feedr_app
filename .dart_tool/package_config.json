@@ -272,6 +272,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "shortid",
+      "rootUri": "file:///C:/Users/simen/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/shortid-0.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "source_map_stack_trace",
       "rootUri": "file:///C:/Users/simen/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/source_map_stack_trace-1.1.5",
       "packageUri": "lib/",
@@ -368,7 +374,7 @@
       "languageVersion": "2.0"
     }
   ],
-  "generated": "2020-10-08T00:15:05.364045Z",
+  "generated": "2020-10-11T03:48:48.232538Z",
   "generator": "pub",
-  "generatorVersion": "2.9.3"
+  "generatorVersion": "2.10.0"
 }

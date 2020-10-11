@@ -316,6 +316,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.3"
+  shortid:
+    dependency: "direct main"
+    description:
+      name: shortid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   source_map_stack_trace:
     dependency: transitive
     description:

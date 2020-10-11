@@ -3,6 +3,7 @@ import 'package:feedr_app/model/client.dart';
 import 'package:feedr_app/model/feedback.dart';
 import 'package:feedr_app/model/servant.dart';
 import 'package:feedr_app/model/vote.dart';
+import 'package:shortid/shortid.dart';
 
 class VoteController extends ResourceController {
   ManagedContext context;
@@ -68,13 +69,15 @@ class VoteController extends ResourceController {
     Client client = await findClientByPhoneInDb(newVote, context);
     Servant servant = await findServantByName(newVote, context);
     Feedback feedback = await createFeedback(newVote, context);
+    final shortId = shortid.generate();
 
     final query = Query<Vote>(context)
       ..values = newVote
       ..values.createdTime = DateTime.now()
       ..values.client.id = client.id
       ..values.servant.id = servant.id
-      ..values.feedback.id = feedback.id;
+      ..values.feedback.id = feedback.id
+      ..values.linkId = shortId;
     final insertedVote = await query.insert();
 
     return Response.ok(insertedVote);

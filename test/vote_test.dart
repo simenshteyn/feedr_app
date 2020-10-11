@@ -24,7 +24,7 @@ Future main() async {
             "createdTime": isTimestamp,
             "voteTime": isNull,
             "askMessage": "Please, leave your feedback",
-            "linkId": isNull,
+            "linkId": isString,
             "client": isNotNull,
             "servant": isNotNull,
             "feedback": isNotNull,
