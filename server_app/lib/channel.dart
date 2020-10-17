@@ -1,10 +1,10 @@
-import 'package:feedr_app/controller/servant_controller.dart';
-import 'package:feedr_app/controller/vote_controller.dart';
-import 'package:feedr_app/controller/client_controller.dart';
-import 'package:feedr_app/controller/feedback_controller.dart';
-import 'package:feedr_app/controller/link_controller.dart';
+import 'package:server_app/controller/servant_controller.dart';
+import 'package:server_app/controller/vote_controller.dart';
+import 'package:server_app/controller/client_controller.dart';
+import 'package:server_app/controller/feedback_controller.dart';
+import 'package:server_app/controller/link_controller.dart';
 
-import 'feedr_app.dart';
+import 'package:server_app/server_app.dart';
 
 class FeedrAppChannel extends ApplicationChannel {
   ManagedContext context;

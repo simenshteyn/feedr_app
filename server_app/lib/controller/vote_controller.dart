@@ -1,8 +1,8 @@
-import 'package:feedr_app/feedr_app.dart';
-import 'package:feedr_app/model/client.dart';
-import 'package:feedr_app/model/feedback.dart';
-import 'package:feedr_app/model/servant.dart';
-import 'package:feedr_app/model/vote.dart';
+import 'package:server_app/server_app.dart';
+import 'package:server_app/model/client.dart';
+import 'package:server_app/model/feedback.dart';
+import 'package:server_app/model/servant.dart';
+import 'package:server_app/model/vote.dart';
 import 'package:shortid/shortid.dart';
 
 class VoteController extends ResourceController {

@@ -1,5 +1,5 @@
-import 'package:feedr_app/feedr_app.dart';
-import 'package:feedr_app/model/feedback.dart';
+import 'package:server_app/server_app.dart';
+import 'package:server_app/model/feedback.dart';
 
 class FeedbackController extends ResourceController {
   ManagedContext context;

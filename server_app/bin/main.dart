@@ -1,4 +1,4 @@
-import 'package:feedr_app/feedr_app.dart';
+import 'package:server_app/server_app.dart';
 
 Future main() async {
   final app = Application<FeedrAppChannel>()

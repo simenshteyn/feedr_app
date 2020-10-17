@@ -1,5 +1,5 @@
-import 'package:feedr_app/feedr_app.dart';
-import 'package:feedr_app/model/servant.dart';
+import 'package:server_app/server_app.dart';
+import 'package:server_app/model/servant.dart';
 
 class ServantController extends ResourceController {
   ManagedContext context;

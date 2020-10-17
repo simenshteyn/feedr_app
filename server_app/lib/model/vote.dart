@@ -1,7 +1,7 @@
 import 'package:aqueduct/aqueduct.dart';
-import 'package:feedr_app/model/client.dart';
-import 'package:feedr_app/model/feedback.dart';
-import 'package:feedr_app/model/servant.dart';
+import 'package:server_app/model/client.dart';
+import 'package:server_app/model/feedback.dart';
+import 'package:server_app/model/servant.dart';
 
 class Vote extends ManagedObject<_Vote> implements _Vote {}
 
