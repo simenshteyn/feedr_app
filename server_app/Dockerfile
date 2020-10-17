@@ -9,4 +9,6 @@ RUN pub get --offline --no-precompile
 WORKDIR /app
 EXPOSE 8080
 
-ENTRYPOINT ["pub", "run", "aqueduct:aqueduct", "serve", "--port", "8080"]
+RUN pub run aqueduct build
+
+ENTRYPOINT ["./server_app.aot", "--port", "8080", "--isolates", "2"]
