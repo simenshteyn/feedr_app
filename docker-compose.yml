@@ -1,7 +1,7 @@
 version: '3'
 services:
-  my-app:
-    build: server_app/
+  server-app:
+    build: ./server_app/
     ports:
       - "8080:8080"
 
@@ -16,8 +16,9 @@ services:
       - "5432:5432" # If you want to expose the db from the container
     volumes:
       - db_data:/var/lib/postgresql/data
-  my-client-app:
-    build: client_app/
+
+  client-app:
+    build: ./client_app/
     ports:
       - "80:80"
 
