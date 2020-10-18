@@ -1,8 +1,14 @@
-version: "3.7"
+version: "3"
 
 services:
   migrator:
     image: andx2/aqueduct:4.0.0-b1
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
     volumes:
       - ./server_app:/app
     command: sh -c "cd /app && pub get && sleep 30 && aqueduct db upgrade --connect postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:${DB_PORT}/${POSTGRES_DB}"
@@ -10,8 +16,6 @@ services:
   data_db:
     image: postgres:12.3-alpine
     container_name: "postgres_data"
-    env_file:
-      - ./data_db.env
     volumes:
       - db_data:/var/lib/postgresql/data/
     restart: "no"
