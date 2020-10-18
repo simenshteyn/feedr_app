@@ -11,5 +11,5 @@ services:
     image: google/dart
     volumes:
       - ./client_app/:/app
-    command: sh -c "cd /app && pub get && pub global activate webdev && webdev build"
+    command: sh -c "cd /app && pub get && pub global activate webdev && webdev build -o /app/public"
 
