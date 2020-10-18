@@ -22,4 +22,24 @@ docker-compose -f docker-compose.migrations.yaml --env-file=data_db.env up
 ```
 
 ## Deploying an Application
+```
+cd ~
+git clone https://github.com/simenshteyn/feedr_app.git
+cd feedr_app
+docker-compose -f docker-compose.aot.yaml up -d
+docker-compose -f docker-compose.migrations.yaml --env-file=data_db.env up -d
+```
+### Deploying at a Low Memory SSD servers
+If your server is 512MB of RAM, this can cause difficulties while precompiling migrations. That's because of Out-Of-Memory issues, to prevent them the best way is to enable swap. Great article here: https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04
+
+```
+sudo swapon --show
+free -h
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon --show
+free -h
+```
 
