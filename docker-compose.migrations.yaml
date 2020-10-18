@@ -15,10 +15,10 @@ services:
 
   data_db:
     image: postgres:12.3-alpine
-    container_name: "postgres_data"
+    container_name: "postgres_data_migration"
     volumes:
-      - db_data:/var/lib/postgresql/data/
+      - db_data_migration:/var/lib/postgresql/data/
     restart: "no"
 
 volumes:
-  db_data: {}
+  db_data_migration: {}
