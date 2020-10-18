@@ -282,7 +282,7 @@ packages:
     source: hosted
     version: "1.4.0"
   postgres:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
       name: postgres
       url: "https://pub.dartlang.org"
