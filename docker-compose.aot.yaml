@@ -6,7 +6,7 @@ services:
     volumes:
       - ./server_app/server_app.aot:/app/server_app.aot
       - ./server_app/config.yaml:/app/config.yaml
-    command: sh -c "cd /app && ./server_app.aot --port 8080 --isolates 1"
+    command: sh -c "cd /app && chmod +x ./server_app.aot && ./server_app.aot --port 8080 --isolates 1"
     restart: "no"
     ports: 
       - 8080:8080
