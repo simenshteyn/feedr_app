@@ -11,4 +11,4 @@ EXPOSE 8080
 
 RUN pub run aqueduct build
 
-ENTRYPOINT ["./server_app.aot", "--port", "8080", "--isolates", "2"]
+ENTRYPOINT ["./server_app.aot", "--port", "8080", "--isolates", "4"]

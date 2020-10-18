@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  aot_builder:
+    image: aqueduct_builder:4.0.0-b1
+    volumes: 
+      - ./server_app/:/app
+    command: sh -c "cd /app && pub get && aqueduct build -d /app/ && chmod +x /app/data_app.aot"
+  
+  client_builder:
+    image: google/dart
+    volumes:
+      - ./client_app/:/app
+    command: sh -c "cd /app && pub get && pub global activate webdev && webdev build"
+
