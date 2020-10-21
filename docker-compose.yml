@@ -1,12 +1,18 @@
-version: '3'
-services:
-  server-app:
-    build: ./server_app/
-    ports:
-      - "8080:8080"
+version: "3.7"
 
+services: 
+  server-app:
+    image: ubuntu:16.04
+    volumes:
+      - ./server_app/server_app.aot:/app/server_app.aot
+      - ./server_app/config.yaml:/app/config.yaml
+    command: sh -c "cd /app && chmod +x ./server_app.aot && ./server_app.aot --port 8080 --isolates 1"
+    restart: "no"
+    ports: 
+      - 8080:8080
+  
   db:
-    image: "postgres:11"
+    image: "postgres:12.3-alpine"
     container_name: "postgres_database_feedr"
     environment: 
       POSTGRES_PASSWORD: abc807
@@ -15,12 +21,28 @@ services:
     ports:
       - "5432:5432" # If you want to expose the db from the container
     volumes:
-      - db_data:/var/lib/postgresql/data
-
-  client-app:
-    build: ./client_app/
+     - db_data:/var/lib/postgresql/data
+  
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./client_app/public/web/:/usr/share/nginx/html/
+      - ./data/nginx:/etc/nginx/conf.d/
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
     ports:
-      - "80:80"
+      - 80:80
+      - 443:443
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 volumes:
   db_data: {}
