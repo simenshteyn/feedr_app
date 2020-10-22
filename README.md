@@ -8,25 +8,44 @@ To generate a SwaggerUI client, run `aqueduct document client`.
 
 ## Building application on local machine
 
-To build client and server application run:
+Fist time building should start with creating dart2native docker image.
+
+Linux:
+```
+chmod +x dart2native.build.image.sh
+./dart2native.build.image.sh
+```
+
+Windows:
+```
+docker build --pull --rm -f "dart2native\Dockerfile" -t aqueduct_builder:4.0.0-b1 "dart2native"
+```
+
+Then to build client and server application run:
 ```
 docker-compose -f docker-compose.dev.build.yaml up --build
 ```
+
 The default proccess is to compile executable .aot file for server and static for client. Now you can run application in local docker: 
 ```
-docker-compose -f docker-compose.aot.yaml up -d
+docker-compose up -d
 ```
-You can check client app on http://127.0.0.1:80 and backend app on http://127.0.0.1:8080/example. At first run you also need to make all migrations on database for working backend:
+You can check client app on http://127.0.0.1 and backend app on http://127.0.0.1/api/example. At first run you also need to make all migrations on database for working backend:
+
 ```
 docker-compose -f docker-compose.migrations.yaml --env-file=data_db.env up
 ```
 
-## Deploying an Application
+## Deploying an Application on Working Server
+
 ```
 cd ~
 git clone https://github.com/simenshteyn/feedr_app.git
 cd feedr_app
-docker-compose -f docker-compose.aot.yaml up -d
+vi data/nging/app.conf   //setup your domain name your.site.com
+chmod +x init-ssl-certbot.sh
+./init-ssl-certbot.sh your.site.com //your domain name as an argument
+docker-compose up -d
 docker-compose -f docker-compose.migrations.yaml --env-file=data_db.env up -d
 ```
 ### Deploying at a Low Memory SSD servers
