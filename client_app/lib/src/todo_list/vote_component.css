@@ -1,7 +1,7 @@
 .rating {
     unicode-bidi: bidi-override;
     direction: rtl; 
-    font-size: 50px;
+    font-size: 36px;
     text-align: center;
 }
 .rating > span {

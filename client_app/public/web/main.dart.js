@@ -6503,7 +6503,7 @@ $.jk=null
 $.kf=0
 $.o9=["._nghost-%ID%{}h3._ngcontent-%ID%{text-align:center}"]
 $.kx=null
-$.o6=['.rating._ngcontent-%ID%{unicode-bidi:bidi-override;direction:rtl;font-size:50px;text-align:center}.rating._ngcontent-%ID% > span._ngcontent-%ID%{display:inline-block;position:relative;width:1.1em}.rating._ngcontent-%ID% > span:hover._ngcontent-%ID%,.rating._ngcontent-%ID% > span:hover._ngcontent-%ID% ~ span._ngcontent-%ID%{color:transparent}.rating._ngcontent-%ID% > span:hover._ngcontent-%ID%:before,.rating._ngcontent-%ID% > span:hover._ngcontent-%ID% ~ span._ngcontent-%ID%:before{content:"\\2605";color:gold;position:absolute}.selected._ngcontent-%ID%:before,.selected._ngcontent-%ID% ~ span._ngcontent-%ID%:before{content:"\\2605";color:gold;position:absolute}']
+$.o6=['.rating._ngcontent-%ID%{unicode-bidi:bidi-override;direction:rtl;font-size:36px;text-align:center}.rating._ngcontent-%ID% > span._ngcontent-%ID%{display:inline-block;position:relative;width:1.1em}.rating._ngcontent-%ID% > span:hover._ngcontent-%ID%,.rating._ngcontent-%ID% > span:hover._ngcontent-%ID% ~ span._ngcontent-%ID%{color:transparent}.rating._ngcontent-%ID% > span:hover._ngcontent-%ID%:before,.rating._ngcontent-%ID% > span:hover._ngcontent-%ID% ~ span._ngcontent-%ID%:before{content:"\\2605";color:gold;position:absolute}.selected._ngcontent-%ID%:before,.selected._ngcontent-%ID% ~ span._ngcontent-%ID%:before{content:"\\2605";color:gold;position:absolute}']
 $.ky=null
 $.o7=[$.o9]
 $.o8=[$.o6]})();(function lazyInitializers(){var t=hunkHelpers.lazy
