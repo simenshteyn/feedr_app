@@ -1,10 +1,7 @@
-<div *ngIf="vote != null">
-    <h2>{{stars}}</h2>
-</div>
-<div>
-    <material-icon icon="star_border"></material-icon>
-    <material-icon icon="star_border"></material-icon>
-    <material-icon icon="star_border"></material-icon>
-    <material-icon icon="star_border"></material-icon>
-    <material-icon icon="star_border"></material-icon>
+<div class="rating">
+    <span (click)="vote(5)" [ngClass]="{'selected': stars==5}">☆</span>
+    <span (click)="vote(4)" [ngClass]="{'selected': stars==4}">☆</span>
+    <span (click)="vote(3)" [ngClass]="{'selected': stars==3}">☆</span>
+    <span (click)="vote(2)" [ngClass]="{'selected': stars==2}">☆</span>
+    <span (click)="vote(1)" [ngClass]="{'selected': stars==1}">☆</span>
 </div>

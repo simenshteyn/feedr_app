@@ -10,7 +10,7 @@ import 'src/todo_list/vote_component.dart';
   selector: 'my-app',
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: [TodoListComponent, VoteComponent],
+  directives: [VoteComponent],
 )
 class AppComponent {
   // Nothing here yet. All logic is in TodoListComponent.

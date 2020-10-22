@@ -13,6 +13,7 @@ import 'vote_service.dart';
     MaterialFabComponent,
     MaterialIconComponent,
     NgIf,
+    NgClass,
   ],
   providers: [ClassProvider(VoteService)],
 )
@@ -28,5 +29,6 @@ class VoteComponent implements OnInit {
 
   void vote(int rating) {
     stars = rating;
+    print("vote now is ${rating}");
   }
 }

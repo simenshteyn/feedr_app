@@ -1,3 +1,30 @@
-.icon {
-    font-size: 36px;
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl; 
+    font-size: 50px;
+    text-align: center;
+}
+.rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}  
+
+.rating > span:hover,
+.rating > span:hover ~ span {
+    color: transparent;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+     content: "\2605";
+     color: gold;
+     position: absolute;
+} 
+
+.selected:before,
+.selected ~ span:before {
+    content: "\2605";
+    color: gold;
+    position: absolute;
 }
