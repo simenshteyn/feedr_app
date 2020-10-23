@@ -5,3 +5,11 @@
     <span (click)="vote(2)" [ngClass]="{'selected': stars==2}">☆</span>
     <span (click)="vote(1)" [ngClass]="{'selected': stars==1}">☆</span>
 </div>
+<div *ngIf="stars == 4">
+<div *ngIf="remarks != null">
+    <ul>
+        <li *ngFor="let remark of remarks">{{remark.description}}</li>
+    </ul>
+</div>
+</div>
+

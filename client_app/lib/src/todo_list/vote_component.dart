@@ -14,21 +14,30 @@ import 'vote_service.dart';
     MaterialIconComponent,
     NgIf,
     NgClass,
+    NgFor,
   ],
   providers: [ClassProvider(VoteService)],
 )
 class VoteComponent implements OnInit {
   final VoteService voteService;
   int stars;
+  String comment;
+  List<Remark> remarks;
   VoteComponent(this.voteService);
 
   @override
   Future<Null> ngOnInit() async {
     stars = await voteService.getRating();
+    remarks = await voteService.getRemarks();
   }
 
   void vote(int rating) {
     stars = rating;
-    print("vote now is ${rating}");
-  }
+}
+}
+
+class Remark {
+  String description;
+  bool status = false;
+  Remark(this.description);
 }
