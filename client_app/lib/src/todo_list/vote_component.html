@@ -1,3 +1,5 @@
+<div *ngIf="servant != null"><img src="{{servant.avatarUrl}}" class="avatar"><p>{{servant.name}}</p></div>
+
 <div class="rating">
     <span (click)="vote(5)" [ngClass]="{'selected': stars==5}">☆</span>
     <span (click)="vote(4)" [ngClass]="{'selected': stars==4}">☆</span>
@@ -24,6 +26,5 @@
         <material-input label="Комментарий…" style="width:80%;"></material-input>
     </ul>
 </div>
-<material-button raised [disabled]="stars == 0" class="highlighted block">Готово</material-button>
-
+<material-button [disabled]="stars == 0" raised class="block highlighted">Готово</material-button>
 

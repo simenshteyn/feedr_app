@@ -22,6 +22,7 @@ import 'vote_service.dart';
 )
 class VoteComponent implements OnInit {
   final VoteService voteService;
+  Servant servant;
   int stars;
   String comment;
   List<Remark> remarks;
@@ -32,6 +33,7 @@ class VoteComponent implements OnInit {
 
   @override
   Future<Null> ngOnInit() async {
+    servant = await voteService.getServant();
     stars = await voteService.getRating();
     remarks = await voteService.getRemarks();
     benefits = await voteService.getBenefits();
@@ -62,4 +64,10 @@ class Remark {
   String description;
   bool status = false;
   Remark(this.description);
+}
+
+class Servant {
+  String avatarUrl = "https://picsum.photos/50"; 
+  String name;
+  Servant(this.name);
 }
