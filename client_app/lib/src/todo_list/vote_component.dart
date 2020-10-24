@@ -12,9 +12,11 @@ import 'vote_service.dart';
   directives: [
     MaterialFabComponent,
     MaterialIconComponent,
+    MaterialButtonComponent,
     NgIf,
     NgClass,
     NgFor,
+    materialInputDirectives,
   ],
   providers: [ClassProvider(VoteService)],
 )
@@ -23,6 +25,7 @@ class VoteComponent implements OnInit {
   int stars;
   String comment;
   List<Remark> remarks;
+  List<Remark> benefits;
   VoteComponent(this.voteService);
 
   bool get isNotFiveStars => stars < 5 ? true : false;
@@ -31,6 +34,7 @@ class VoteComponent implements OnInit {
   Future<Null> ngOnInit() async {
     stars = await voteService.getRating();
     remarks = await voteService.getRemarks();
+    benefits = await voteService.getBenefits();
   }
 
   void vote(int rating) {
@@ -42,6 +46,14 @@ class VoteComponent implements OnInit {
       remarks[index].status = true;
     } else {
       remarks[index].status = false;
+    }
+  }
+
+  void checkBenefit(int index) {
+    if (benefits[index].status == false) {
+      benefits[index].status = true;
+    } else {
+      benefits[index].status = false;
     }
   }
 }

@@ -9,12 +9,21 @@
 <div *ngIf="stars == 1 || stars == 2 || stars == 3 || stars == 4" class="remarks">
     <p>Что вам не понравилось?</p>
     <ul>
-        <li *ngFor="let remark of remarks; let i=index" [class.checked]="remark.status" >
-           
-            <div (click)="checkRemark(i)">{{remark.description}}</div>
-
+        <li *ngFor="let remark of remarks; let i=index" [class.checked]="remark.status" class="item">
+           <div (click)="checkRemark(i)">{{remark.description}}</div>
         </li>
+        <material-input label="Комментарий…" style="width:80%;"></material-input>
     </ul>
 </div>
+<div *ngIf="stars == 5" class="remarks">
+    <p>Что особенно понравилось?</p>
+    <ul>
+        <li *ngFor="let benefit of benefits; let i=index" [class.checked]="benefit.status" class="item">
+           <div (click)="checkBenefit(i)">{{benefit.description}}</div>
+        </li>
+        <material-input label="Комментарий…" style="width:80%;"></material-input>
+    </ul>
+</div>
+<material-button raised [disabled]="stars == 0" class="highlighted block">Готово</material-button>
 
 
