@@ -25,6 +25,8 @@ class VoteComponent implements OnInit {
   List<Remark> remarks;
   VoteComponent(this.voteService);
 
+  bool get isNotFiveStars => stars < 5 ? true : false;
+
   @override
   Future<Null> ngOnInit() async {
     stars = await voteService.getRating();
@@ -33,7 +35,15 @@ class VoteComponent implements OnInit {
 
   void vote(int rating) {
     stars = rating;
-}
+  }
+
+  void checkRemark(int index) {
+    if (remarks[index].status == false) {
+      remarks[index].status = true;
+    } else {
+      remarks[index].status = false;
+    }
+  }
 }
 
 class Remark {

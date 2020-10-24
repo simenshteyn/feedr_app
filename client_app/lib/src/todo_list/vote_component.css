@@ -28,3 +28,56 @@
     color: gold;
     position: absolute;
 }
+
+.remarks {
+    text-align: center;
+}
+  
+  /* Style the list items */
+  ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 0px 12px 0px;
+    background: #eee;
+    font-size: 13px;
+    transition: 0.2s;
+    list-style-type: none;
+  
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Set all odd list items to a different color (zebra-stripes) */
+  ul li:nth-child(odd) {
+    background: #f9f9f9;
+  }
+  
+  /* Darker background-color on hover */
+  ul li:hover {
+    background: #ddd;
+  }
+  
+  /* When clicked on, add a background color and strike out text */
+  ul li.checked {
+    /* background: #888;
+    color: #fff; */
+    text-decoration: none;
+  }
+  
+  /* Add a "checked" mark when clicked on */
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    right: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+

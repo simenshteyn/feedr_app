@@ -7,5 +7,5 @@ import 'package:client_app/src/todo_list/vote_component.dart';
 class VoteService {
   Future<int> getRating() async => 0;
   Future<List<Remark>> getRemarks() async =>
-      [Remark('Мастер был невежлив'), Remark('Подбор варианта ресниц')];
+      [Remark('Мастер был невежлив'), Remark('Плохо подобран вариант'), Remark('Медленная работа')];
 }
