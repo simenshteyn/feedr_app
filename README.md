@@ -8,6 +8,13 @@ To generate a SwaggerUI client, run `aqueduct document client`.
 
 ## Building application on local machine
 
+You may need to clean docker containers on local machine. For Windows use:
+```
+docker system prune
+docker system prune -a
+docker volume prune
+```
+
 Fist time building should start with creating dart2native docker image.
 
 Linux:
@@ -28,13 +35,14 @@ docker-compose -f docker-compose.dev.build.yaml up --build
 
 The default proccess is to compile executable .aot file for server and static for client. Now you can run application in local docker: 
 ```
-docker-compose up -d
+docker-compose -f docker-compose.local.yaml up -d
 ```
-You can check client app on http://127.0.0.1 and backend app on http://127.0.0.1/api/example. At first run you also need to make all migrations on database for working backend:
+At first run you also need to make all migrations on database for working backend:
 
 ```
 docker-compose -f docker-compose.migrations.yaml --env-file=data_db.env up
 ```
+You can check client app on http://127.0.0.1 and backend app on http://127.0.0.1/api/example. 
 
 ## Deploying an Application on Working Server
 
@@ -42,7 +50,7 @@ docker-compose -f docker-compose.migrations.yaml --env-file=data_db.env up
 cd ~
 git clone https://github.com/simenshteyn/feedr_app.git
 cd feedr_app
-vi data/nging/app.conf   //setup your domain name your.site.com
+vi data/nginx/app.conf   //setup your domain name your.site.com
 chmod +x init-ssl-certbot.sh
 ./init-ssl-certbot.sh your.site.com //your domain name as an argument
 docker-compose up -d
